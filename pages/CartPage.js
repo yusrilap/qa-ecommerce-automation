@@ -1,10 +1,11 @@
 export class CartPage {
-    constuctor(page) {
-        this.page = page;
-        this.checkoutButton = page.getByRole('button', { name: 'Checkout' });
-    }
+  constructor(page) {
+    this.page = page;
+    this.checkoutButton = page.locator('#checkout');
+  }
 
-    async checkout() {
-        await this.checkoutButton.click();
-    }
+  async checkout() {
+    await this.checkoutButton.waitFor({ state: 'visible' });
+    await this.checkoutButton.click();
+  }
 }
