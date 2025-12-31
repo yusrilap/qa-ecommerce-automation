@@ -30,7 +30,7 @@ export class CheckoutPage {
     await this.continueButton.click();
   }
 
-  async getErrorMessage() {
+  getErrorMessage() {
     return this.page.locator('[data-test="error"]');
   }
 }
