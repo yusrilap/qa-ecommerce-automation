@@ -22,4 +22,15 @@ export class CheckoutPage {
     await this.finishButton.waitFor({ state: 'visible' });
     await this.finishButton.click();
   }
+
+  async fillInformationWithoutPostalCode() {
+    await this.firstName.waitFor({ state: 'visible' });
+    await this.firstName.fill('QA');
+    await this.lastName.fill('Automation');
+    await this.continueButton.click();
+  }
+
+  async getErrorMessage() {
+    return this.page.locator('[data-test="error"]');
+  }
 }
