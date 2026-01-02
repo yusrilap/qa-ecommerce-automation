@@ -11,5 +11,6 @@ export class ProductsPage {
 
   async goToCart() {
     await this.cartIcon.click();
+    await this.page.waitForURL(/cart/);
   }
 }
