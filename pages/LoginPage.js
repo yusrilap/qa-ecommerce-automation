@@ -18,4 +18,10 @@ export class LoginPage {
       this.loginButton.click(),
     ]);
   }
+
+  async attemptLogin(username, password) {
+    await this.username.fill(username);
+    await this.password.fill(password);
+    await this.loginButton.click();
+  }
 }
