@@ -4,15 +4,12 @@ import { ProductsPage } from '../../pages/ProductsPage';
 import { CartPage } from '../../pages/CartPage';
 import { CheckoutPage } from '../../pages/CheckoutPage';
 import { users } from '../../test-data/users.js';
-import { checkProductsApiHealth } from '../../utils/apiHelper.js';
+import { checkAppHealth } from '../../utils/apiHelper.js';
 
-
-await expect(page.getByRole('button', {name: 'Checkout' })).toBeVisible();
-await cartPage.checkout();
 
 // Smoke test: critical ecommerce checkout flow
 test('@smoke @e2e User can login and complete checkout', async ({ page, request }) => {
-  await checkProductsApiHealth(request);
+  await checkAppHealth(request);
 
   const loginPage = new LoginPage(page);
   const productsPage = new ProductsPage(page);
@@ -26,6 +23,8 @@ test('@smoke @e2e User can login and complete checkout', async ({ page, request 
 
   await productsPage.addFirstProductToCart();
   await productsPage.goToCart();
+
+  await expect(page.getByRole('button', { name:'Checkout' })).toBeVisible();
 
   await cartPage.checkout();
 
