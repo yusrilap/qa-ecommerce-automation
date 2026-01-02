@@ -6,7 +6,7 @@ test('@regression Login should fail for locked user', async ({ page }) => {
   const loginPage = new LoginPage(page);
 
   await loginPage.visit();
-  await loginPage.login(users.locked.username, users.locked.password);
+  await loginPage.attemptLogin(users.locked.username, users.locked.password);
 
   const errorMessage = page.locator('[data-test="error"]');
   await expect(errorMessage).toBeVisible();
