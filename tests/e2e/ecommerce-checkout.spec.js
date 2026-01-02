@@ -51,3 +51,14 @@ test('@regression Checkout should show error when postal code is missing', async
   await expect(errorMessage).toContainText('Postal Code is required');
 });
 
+test('@regression Login should fail for locked user', async ({ page }) => {
+  const loginPage = new LoginPage(page);
+
+  await loginPage.visit();
+  await loginPage.login(users.locked.username, users.locked.password);
+
+  const errorMessage = page.locator('[data-test="error"]');
+  await expect(errorMessage).toBeVisible();
+  await expect(errorMessage).toContainText('locked out');
+});
+
