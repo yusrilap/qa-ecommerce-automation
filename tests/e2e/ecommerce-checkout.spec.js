@@ -6,10 +6,14 @@ import { CheckoutPage } from '../../pages/CheckoutPage';
 import { users } from '../../test-data/users.js';
 import { checkProductsApiHealth } from '../../utils/apiHelper.js';
 
+
+await expect(page.getByRole('button', {name: 'Checkout' })).toBeVisible();
+await cartPage.checkout();
+
 // Smoke test: critical ecommerce checkout flow
 test('@smoke @e2e User can login and complete checkout', async ({ page, request }) => {
   await checkProductsApiHealth(request);
-  
+
   const loginPage = new LoginPage(page);
   const productsPage = new ProductsPage(page);
   const cartPage = new CartPage(page);

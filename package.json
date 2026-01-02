@@ -1,9 +1,12 @@
 {
   "name": "qa-ecommerce-automation",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "playwright test"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yusrilap/qa-ecommerce-automation.git"
